@@ -1,9 +1,6 @@
-/**
- * Created by Jepson on 2018/4/6.
- */
-
 // 防止全局变量污染, 等待dom渲染再执行
 $(function() {
+
 
     // 1. 进行表单校验
     //    校验要求: (1) 用户名不能为空
@@ -59,7 +56,6 @@ $(function() {
 
     });
 
-
     // 2. 进行登录请求
     //    通过 ajax 进行登录请求
 
@@ -69,10 +65,6 @@ $(function() {
     $('#form').on("success.form.bv", function(e) {
         // 阻止默认的表单提交
         e.preventDefault();
-
-        //console.log($('#form').serialize());
-
-        // 通过 ajax 进行登录请求
         $.ajax({
             type: "post",
             url: "/employee/employeeLogin",
@@ -100,11 +92,8 @@ $(function() {
                     $('#form').data("bootstrapValidator").updateStatus("password", "INVALID", "callback")
                 }
             }
-
         })
-
     });
-
 
     // 3. 重置功能实现
     $('[type="reset"]').click(function() {
@@ -112,5 +101,4 @@ $(function() {
         // 除了重置文本, 还要重置校验状态
         $('#form').data("bootstrapValidator").resetForm();
     });
-
 });
